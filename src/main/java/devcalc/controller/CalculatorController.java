@@ -33,3 +33,6 @@ public class CalculatorController {
         return service.divide(a, b);
     }
 }
+
+// Comentário de teste para verificar execução do pipeline
+
