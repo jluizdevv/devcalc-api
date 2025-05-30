@@ -6,4 +6,3 @@ A aplicação DevCalc, uma API REST escrita em Java na ferramenta de build escol
 
 A API servirá como base para a implementação de um pipeline de CI/CD completo, que deve incluir etapas de verificação de código, testes automatizados, build, empacotamento e simulação de deploy — conforme os conceitos discutidos nos capítulos do material didático.
 
-> Teste de modificação no README
