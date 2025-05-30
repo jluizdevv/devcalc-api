@@ -1,0 +1,16 @@
+name: Hello Workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir mensagem de sucesso
+        run: echo "Pipeline iniciado com sucesso"
+
+# Teste de disparo do workflow
