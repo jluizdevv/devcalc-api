@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'src/**'
   pull_request:
     paths:
       - 'src/**'
@@ -48,3 +46,26 @@ jobs:
 
       - name: Executar testes
         run: mvn test
+
+  package:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Gerar pacote JAR
+        run: mvn package
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [package]
+    steps:
+      - name: Mensagem de Deploy
+        run: echo "Deploy realizado com sucesso"
