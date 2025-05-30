@@ -32,4 +32,10 @@ class CalculatorServiceTest {
     void testDivideByZero() {
         assertThrows(ArithmeticException.class, () -> service.divide(10, 0));
     }
+
+    @Test
+    void testMultiplyWithNegative() {
+        assertEquals(-20, service.multiply(-4, 5));
+    }
+
 }
