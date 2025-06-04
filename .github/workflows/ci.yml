@@ -74,7 +74,7 @@ jobs:
   codeql:
     name: Análise de Segurança com CodeQL
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [ build ]
     permissions:
       actions: read
       contents: read
@@ -84,10 +84,19 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - name: Inicializar CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: java
+
+      - name: Compilar projeto
+        run: mvn clean install --no-transfer-progress
 
       - name: Executar análise de CodeQL
         uses: github/codeql-action/analyze@v3
