@@ -70,3 +70,24 @@ jobs:
     steps:
       - name: Mensagem de Deploy
         run: echo "Deploy realizado com sucesso"
+
+        codeql:
+          name: Análise de Segurança com CodeQL
+          runs-on: ubuntu-latest
+          permissions:
+            actions: read
+            contents: read
+            security-events: write
+
+          steps:
+            - name: Checkout do código
+              uses: actions/checkout@v3
+
+            - name: Inicializar CodeQL
+              uses: github/codeql-action/init@v2
+              with:
+                languages: java
+
+            - name: Executar análise de CodeQL
+              uses: github/codeql-action/analyze@v2
+
