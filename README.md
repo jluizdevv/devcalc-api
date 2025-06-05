@@ -1,5 +1,7 @@
 # DevCalc
 
+![CI Status](https://github.com/jluizdevv/devcalc-api/actions/workflows/ci.yml/badge.svg)
+
 Projeto simples de uma API em Java com Spring Boot que realiza operações matemáticas básicas: soma, subtração, multiplicação e divisão.
 
 ## Tecnologias utilizadas
