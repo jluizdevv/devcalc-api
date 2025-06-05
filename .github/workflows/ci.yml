@@ -40,9 +40,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Falha proposital
-        run: exit 1
-
+      - name: Build com Maven
+        run: mvn clean install
 
   lint-and-test:
     needs: build
