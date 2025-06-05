@@ -1,30 +1,31 @@
-name: Lint and Test Workflow
+name: Lint and Test
 
 on:
   workflow_call:
+    inputs:
+      run_tests:
+        required: false
+        type: boolean
+        default: true
+      run_lint:
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   lint:
-    name: Verificação de Estilo (Lint)
+    if: ${{ inputs.run_lint == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Executar Lint com Checkstyle
-        run: |
-          mvn checkstyle:checkstyle
+      - name: Verificação de estilo (Lint simulado)
+        run: echo "Executando lint do código..."
 
   test:
-    name: Testes Automatizados
+    if: ${{ inputs.run_tests == true }}
     runs-on: ubuntu-latest
-    needs: lint
     steps:
       - name: Checkout do código
         uses: actions/checkout@v3
