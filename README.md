@@ -36,4 +36,8 @@ Execução manual
 O workflow também suporta execução manual via GitHub Actions usando workflow_dispatch.
 Você pode rodar o pipeline diretamente na aba Actions do repositório.
 
+Depuração do Pipeline com GitHub Actions
+
+Durante a configuração do pipeline, foi provocado intencionalmente uma falha ao modificar um comando no job de build (run: mvn clean install → run: mvn cleann install). Após o push, foi acessado a aba Actions do repositório no GitHub, onde foi possível visualizar o histórico de execuções e analisar os logs detalhados do workflow com erro.
+A interface mostrou claramente em qual step ocorreu a falha e qual foi a mensagem de erro. Corrigi o comando inválido no arquivo ci.yml, e realizei novo commit e push, e confirmei a execução bem-sucedida na mesma aba de Actions. Essa prática demonstrou a importância do uso de logs e da estrutura modular dos workflows para facilitar a identificação e correção de erros.
 
