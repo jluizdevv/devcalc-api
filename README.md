@@ -15,7 +15,7 @@ Projeto simples de uma API em Java com Spring Boot que realiza operações matem
 ## Como executar o projeto
 
 1. Clone o repositório:
-git clone https://github.com/seu-usuario/devcalc-api.git
+git clone https://github.com/jluizdevv/devcalc-api
 cd devcalc-api
 2. Compile o projeto:
 mvn clean install
