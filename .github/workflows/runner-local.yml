@@ -8,12 +8,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Exibir informações do sistema
+        shell: pwsh
         run: |
           Write-Output "Sistema operacional:"
           Get-CimInstance -ClassName Win32_OperatingSystem
           Write-Output "Versão do Java:"
           java -version
 
-      - name: Verificar instalação do curl
+      - name: Instalar software adicional (7zip)
+        shell: pwsh
         run: |
-          curl --version
+          choco install 7zip -y
+          7z
