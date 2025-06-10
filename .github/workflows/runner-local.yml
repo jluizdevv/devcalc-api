@@ -15,8 +15,8 @@ jobs:
           Write-Output "Versão do Java:"
           java -version
 
-      - name: Instalar software adicional (Git)
+      - name: Instalar software adicional (curl)
         shell: powershell
         run: |
-          choco install git -y
-          git --version
+          choco install curl -y
+          curl --version
