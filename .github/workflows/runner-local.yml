@@ -8,7 +8,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Exibir informações do sistema
-        shell: pwsh
+        shell: powershell
         run: |
           Write-Output "Sistema operacional:"
           systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
@@ -16,7 +16,7 @@ jobs:
           java -version
 
       - name: Instalar software adicional (Git)
-        shell: pwsh
+        shell: powershell
         run: |
           choco install git -y
           git --version
