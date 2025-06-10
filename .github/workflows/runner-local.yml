@@ -1,0 +1,20 @@
+name: Teste com Runner Local
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-hosted-check:
+    runs-on: self-hosted
+    steps:
+      - name: Exibir informações do sistema
+        run: |
+          echo "Sistema operacional:"
+          uname -a
+          echo "Versão do Java:"
+          java -version
+
+      - name: Instalar software adicional (curl)
+        run: |
+          choco install curl -y
+          curl --version
