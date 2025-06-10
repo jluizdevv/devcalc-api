@@ -1,0 +1,31 @@
+name: Contextos e Escopos
+
+on:
+  workflow_dispatch:
+
+env:
+  STAGE: test  
+
+jobs:
+  mostrar-contextos:
+    runs-on: ubuntu-latest
+
+    env:
+      STAGE: job-level  
+
+    steps:
+      - name: Passo 1 - Mostrar variáveis globais e de job
+        run: |
+          echo "Usuário que acionou o workflow: ${{ github.actor }}"
+          echo "Sistema operacional do runner: ${{ runner.os }}"
+          echo "STAGE (nível de job): $STAGE"
+
+      - name: Passo 2 - Variável STAGE em nível de step
+        env:
+          STAGE: step-level  
+        run: |
+          echo "STAGE (nível de step): $STAGE"
+
+      - name: Passo 3 - Volta para valor do nível de job
+        run: |
+          echo "STAGE (de volta ao nível de job): $STAGE"
