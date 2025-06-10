@@ -9,12 +9,11 @@ jobs:
     steps:
       - name: Exibir informações do sistema
         run: |
-          echo "Sistema operacional:"
-          uname -a
-          echo "Versão do Java:"
+          Write-Output "Sistema operacional:"
+          Get-CimInstance -ClassName Win32_OperatingSystem
+          Write-Output "Versão do Java:"
           java -version
 
-      - name: Instalar software adicional (curl)
+      - name: Verificar instalação do curl
         run: |
-          choco install curl -y
           curl --version
