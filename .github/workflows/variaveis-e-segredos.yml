@@ -1,0 +1,21 @@
+name: Uso de Variáveis e Secrets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  variaveis-segredos:
+    runs-on: self-hosted
+
+    steps:
+      - name: Exibir variáveis públicas
+        run: |
+          echo "Modo da aplicação: ${{ vars.APP_MODE }}"
+          echo "Email de suporte: ${{ vars.SUPPORT_EMAIL }}"
+
+      - name: Simular uso de segredo sensível
+        run: |
+          echo "Iniciando autenticação..."
+          echo "Token secreto recebido com sucesso. Não será exibido por segurança."
+        env:
+          PROD_TOKEN: ${{ secrets.PROD_TOKEN }}
