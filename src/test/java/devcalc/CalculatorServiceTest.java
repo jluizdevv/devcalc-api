@@ -2,6 +2,7 @@ package devcalc;
 
 import devcalc.service.CalculatorService;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorServiceTest {
@@ -38,4 +39,15 @@ class CalculatorServiceTest {
         assertEquals(-20, service.multiply(-4, 5));
     }
 
+    
+    @Test
+    void testSqrtPositive() {
+        assertEquals(4.0, service.sqrt(16));
+    }
+
+
+    @Test
+    void testSqrtNegative() {
+        assertThrows(IllegalArgumentException.class, () -> service.sqrt(-25));
+    }
 }

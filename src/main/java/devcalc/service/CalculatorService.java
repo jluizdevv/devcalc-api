@@ -21,4 +21,9 @@ public class CalculatorService {
         if (b == 0) throw new ArithmeticException("Divisão por zero.");
         return (double) a / b;
     }
+
+    public double sqrt(int x) {
+        if (x < 0) throw new IllegalArgumentException("Número negativo não possui raiz real.");
+        return Math.sqrt(x);
+    }
 }

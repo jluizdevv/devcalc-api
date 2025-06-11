@@ -32,7 +32,9 @@ public class CalculatorController {
     public double divide(@RequestParam int a, @RequestParam int b) {
         return service.divide(a, b);
     }
+
+    @GetMapping("/sqrt")
+    public double sqrt(@RequestParam int x) {
+        return service.sqrt(x);
+    }
 }
-
-// Comentário de teste para verificar execução do pipeline
-
