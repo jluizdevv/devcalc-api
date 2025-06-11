@@ -46,7 +46,7 @@ A interface mostrou claramente em qual step ocorreu a falha e qual foi a mensage
 ## Observações sobre Execuções do Pipeline
 Realizei duas execuções distintas do pipeline: uma acionada automaticamente por um push na branch main e outra manualmente através do botão "Run workflow" na aba Actions do GitHub. Pela interface, é possível identificar o tipo de gatilho usado em cada execução, usando os filtros disponíveis no menu lateral da aba Actions. A execução via push ocorre de forma imediata sempre que há mudanças no código, sendo útil para validar automaticamente novas versões. Já a execução manual permite maior controle, pois é possível selecionar parâmetros como run_tests e run_lint, úteis para testes específicos ou execuções parciais. Essa flexibilidade torna o pipeline mais adaptável ao fluxo de trabalho da equipe.
 
- Etapas DO TP3 do Projeto DevCalc com GitHub Actions
+## Etapas DO TP3 do Projeto DevCalc com GitHub Actions
 Este repositório demonstra a automação de CI/CD com GitHub Actions integrando práticas modernas de DevOps. As etapas implementadas foram:
 
 Etapa 1 - Execução de Comandos no Runner
