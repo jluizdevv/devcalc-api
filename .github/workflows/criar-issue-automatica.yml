@@ -1,0 +1,28 @@
+name: Criar Issue Automática
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  verificar-e-criar-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verificar se PROD_TOKEN está ausente
+        run: |
+          if [ -z "${{ secrets.PROD_TOKEN }}" ]; then
+            echo "PROD_TOKEN ausente. Criando issue..."
+            curl -X POST \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/issues \
+              -d '{
+                "title": "Token de Produção ausente",
+                "body": "O segredo PROD_TOKEN não está configurado no repositório.",
+                "labels": ["bug", "automático"]
+              }'
+          else
+            echo "PROD_TOKEN está presente."
+          fi
