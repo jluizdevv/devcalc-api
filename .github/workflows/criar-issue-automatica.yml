@@ -1,0 +1,38 @@
+name: Criar Issue se Variável Estiver Ausente
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write  
+
+jobs:
+  verifica-variavel:
+    runs-on: self-hosted
+
+    steps:
+      - name: Verificar variável PROD_TOKEN
+        id: checagem
+        run: |
+          if [ -z "${{ secrets.PROD_TOKEN }}" ]; then
+            echo "Variável PROD_TOKEN ausente"
+            echo "faltando=true" >> $GITHUB_ENV
+          else
+            echo "PROD_TOKEN está presente"
+            echo "faltando=false" >> $GITHUB_ENV
+          fi
+
+      - name: Criar issue se PROD_TOKEN estiver ausente
+        if: env.faltando == 'true'
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues \
+            -d @- <<EOF
+          {
+            "title": "🚨 Variável PROD_TOKEN ausente",
+            "body": "O workflow detectou que o segredo **PROD_TOKEN** não está configurado.",
+            "labels": ["bug", "ci"]
+          }
+EOF
