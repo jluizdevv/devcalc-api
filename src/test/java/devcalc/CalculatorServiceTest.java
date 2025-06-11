@@ -39,7 +39,7 @@ class CalculatorServiceTest {
         assertEquals(-20, service.multiply(-4, 5));
     }
 
-    
+
     @Test
     void testSqrtPositive() {
         assertEquals(4.0, service.sqrt(16));
