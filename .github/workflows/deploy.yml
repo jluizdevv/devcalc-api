@@ -1,0 +1,35 @@
+name: Deploy App
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    
+    environment:
+      name: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}
+
+    steps:
+      - name: Exibir branch e ambiente selecionado
+        run: |
+          echo "Branch atual: ${{ github.ref }}"
+          echo "Ambiente selecionado: ${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}"
+
+      - name: Configurar ambiente de DEV
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          echo "Deploy no ambiente de desenvolvimento"
+          echo "APP_ENV: ${{ vars.APP_ENV }}"
+
+      - name: Configurar ambiente de PRODUÇÃO
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Deploy no ambiente de produção"
+          echo "Usando chave de deploy (oculta)"
+          echo "::add-mask::${{ secrets.PROD_DEPLOY_KEY }}"
+          echo "Deploy autorizado após revisão manual"
